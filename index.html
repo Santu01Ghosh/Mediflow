@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediFlow : Efficient Hospital </title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+    /*Css Reset*/
+    body {
+        font-family: 'Franklin Gothic Medium';
+        margin: 0px;
+        padding: 0px;
+        background: url('img/stethoscope-icon-2316460_1920.png');
+        background-position: center;
+        background-color: rgb(234, 181, 181);
+        height: 100%;
+        /* Ensure the body takes up the full height of the viewport */
+        overflow-y: scroll;
+        /* Enable vertical scrolling */
+    }
+
+
+
+
+    .left {
+        display: inline-block;
+        position: absolute;
+        left: 35px;
+        top: 20px;
+        /*border: 2px solid rgb(84, 121, 206);*/
+    }
+
+    .left img {
+        width: 70px;
+    }
+
+    .left div {
+        line-height: 35px;
+        font-size: 21px;
+    }
+
+    .mid {
+        display: block;
+        width: 60%;
+        text-align: center;
+        margin: 20px auto;
+        /*border: 2px solid rgb(84, 121, 206);*/
+    }
+
+
+    .right {
+        position: absolute;
+        right: 34px;
+        top: 20px;
+        display: inline-block;
+
+    }
+
+    .navbar {
+        display: inline-block;
+
+    }
+
+    .navbar li {
+        display: inline-block;
+    }
+
+    .navbar li a {
+        text-decoration: none;
+        color: black;
+        padding: 34px 23px;
+        font-size: 17px;
+
+    }
+
+    .navbar li a:hover,
+    .navbar li a.active {
+        text-decoration: none !important;
+        color: rgb(255, 235, 195);
+
+    }
+
+    .btn {
+        margin: 3px 3px;
+        padding: 7px 15px;
+        /* background-color: black;
+        color: white*/
+        border: 3px solid rgb(0, 0, 0);
+        border-radius: 10px;
+        font-size: 13px;
+        cursor: pointer;
+
+    }
+
+    .btn:hover {
+        background-color: rgb(217, 211, 222);
+    }
+
+    .btn {
+        font-family: 'Franklin Gothic Medium';
+    }
+
+    .container {
+        border: 2px solid rgb(21, 18, 18);
+        margin: 130px 18px;
+        padding: 18px;
+        width: 41%;
+        border-radius: 28px;
+        background-image: url('img/stethoscope-icon-2316460_1920.png');
+        background-color: rgb(252, 223, 197);
+    }
+
+
+    .form-group input {
+        font-family: 'Franklin Gothic Medium';
+        text-align: center;
+        display:block;
+        width: 530px;
+        margin: 3px auto;
+        margin-right: 3%;
+        font-size: 17px;
+        padding: 5px;
+        border: 2px solid rgb(5, 252, 190);
+        border-radius: 8px;
+    }
+
+    .container h1 {
+        text-align: center;
+    }
+
+    .container button {
+        font-size: 130%;
+        display: block;
+        width: 545px;
+        background-color: rgb(99, 76, 76);
+        margin: 6px auto;
+        border-radius: 8px;
+    }
+
+    .btn1 {
+        font-family: 'Franklin Gothic Medium';
+        margin: 3px 3px;
+        padding: 7px 15px;
+        border: 3px solid honeydew;
+        border-radius: 10px;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    .btn1:hover {
+        background-color: hsl(193, 82%, 70%);
+
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: rgb(198, 196, 169);
+        min-width: 160px;
+        padding: 10px;
+        border: 2px solid rgb(105, 75, 146);
+        border-radius: 7px;
+        z-index: 1;
+        top: 40px;
+        /* Adjust this value to control the dropdown's vertical position */
+        animation: fade-in 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-content p {
+        cursor: pointer;
+        color: #000000c2;
+        margin: 0;
+        padding: 5px 0;
+        font-size: 14px;
+    }
+
+    .dropdown-content p:hover {
+        color: rgb(228, 15, 15);
+    }
+
+    .dropdown-content p:first-child {
+        font-weight: bold;
+        font-style: italic;
+        font-family: monospace;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<body>
+    <header class="header">
+        <!--Left Box For Logo-->
+        <div class="left">
+            <img src="img/stethoscope-icon-2316460_1920.png" alt="">
+            <h3>MediFlow</h3>
+
+        </div>
+        <!--Mid Box For Navbar-->
+        <div class="mid">
+            <ul class="navbar">
+                <li><a href="#">Home</a></li>
+                <li><a href="about.html" target="_blank">About Us</a></li>
+                <li><a href="#departments">Departments</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+            <script>
+                function openAboutPage() {
+                    window.open('about.html', '_blank');
+                }
+            </script>
+        </div>
+        <div class="right">
+            <button class="btn1" id="callBtn">Call Us</button>
+            <div id="callDropdown" class="dropdown-content">
+                <p>Phone Number: 123-456-7890 </p>
+            </div>
+            <button class="btn1" id="emailBtn">Email Us</button>
+            <div id="emailDropdown" class="dropdown-content">
+                <p>Email: medi123@gmail.com </p>
+            </div>
+            <button class="btn1" id="Login">Login</button>
+        </div>
+    </header>
+    <script>
+        // Get the elements
+        const callBtn = document.getElementById("callBtn");
+        const emailBtn = document.getElementById("emailBtn");
+        const callDropdown = document.getElementById("callDropdown");
+        const emailDropdown = document.getElementById("emailDropdown");
+
+        // Add event listeners
+        callBtn.addEventListener("click", toggleCallDropdown);
+        emailBtn.addEventListener("click", toggleEmailDropdown);
+
+        // Toggle the call dropdown
+        function toggleCallDropdown() {
+            callDropdown.style.display = callDropdown.style.display === "block" ? "none" : "block";
+            emailDropdown.style.display = "none";
+        }
+
+        // Toggle the email dropdown
+        function toggleEmailDropdown() {
+            emailDropdown.style.display = emailDropdown.style.display === "block" ? "none" : "block";
+            callDropdown.style.display = "none";
+        }
+    </script>
+ <script>
+    // Get the login button element
+    var loginButton = document.getElementById("Login");
+
+    // Add an event listener to the button's click event
+    loginButton.addEventListener("click", function(event) {
+      // Redirect the user to the login page
+      window.location.href = "login.html";
+    });
+  </script>
+
+
+    <div class="container">
+        <h1>Book a Health Check-Up</h1>
+        <form id="healthCheckupForm" action="confirmation.html">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Enter Your Name">
+            </div>
+            <div class="form-group">
+                <input type="text" name="phone" placeholder="Enter Your Phone No.">
+            </div>
+            <div class="form-group">
+                <input type="text" name="email" placeholder="Enter Your Email">
+                <span class="error-message" id="emailErrorMessage"></span>
+            </div>
+            <div class="form-group">
+                <input type="text" name="address" placeholder="Enter Your Address">
+            </div>
+            <div class="form-group">
+                <label for="dateInput">Select a date:</label>
+                <input type="date" id="dateInput" class="date-input">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("healthCheckupForm").addEventListener("submit", function (event) {
+            var nameInput = document.getElementsByName("name")[0];
+            var phoneInput = document.getElementsByName("phone")[0];
+            var emailInput = document.getElementsByName("email")[0];
+
+            if (nameInput.value.trim() === "" || phoneInput.value.trim() === "" || emailInput.value.trim() === "") {
+                // Display an error message or perform any other necessary actions
+                alert("Please fill in all the required fields.");
+                event.preventDefault(); // Prevent form submission
+            }
+            else if (!validatePhone(phoneInput.value)) {
+                alert("Please enter a valid 10-digit phone number.");
+                event.preventDefault(); // Prevent form submission
+            }
+            else if (!validateEmail(emailInput.value)) {
+                alert("Please enter a valid email address.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+
+        function validatePhone(phone) {
+            var phonePattern = /^\d{10}$/;
+            return phonePattern.test(phone);
+        }
+
+        function validateEmail(email) {
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    </script>
+
+    <div class="heading">
+        <h1>Explore our Departments of Clinical Excellence</h1>
+        <p>Learn about the world class health care we provide</p>
+    </div>
+    <div id="departments" class="container1">
+        <div class="item" id="item-1">
+            <div class="logo">
+                <img src="img/neurology.svg" alt="Neurology Logo">
+            </div>
+            <h2>Neurology</h2>
+        </div>
+
+        <!-- The modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Neurology Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-1');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    {
+                        name: "Dr. John Doe", specialty: "Neurologist", details: "MD- Gen.Medicine, DM - Neurology"
+                    },
+                    { name: "Dr. Jane Smith", specialty: "Neurosurgeon", details: "MBBS, MD(general medicine), DM(Neurology)" },
+                    { name: "Dr. David Johnson", specialty: "Neuropsychiatrist", details: "MBBS,MD(Med),MRCP(UK), CCST(Neurology)UK,FRCP(London),FRCP(Edin)" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-2">
+            <div class="logo">
+                <img src="Img/orthopaedic.svg" alt="Orthopaedic Logo">
+            </div>
+            <h2>Orthopaedic</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Orthopaedic Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-2');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. A Mohan Krishna", specialty: " Orthopaedics", details: "MBBS; MS Orthopaedics MCh Ortho" },
+                    { name: "Dr. Abheek Kar", specialty: "Orthopedician", details: "MS(Ortho), MRCS(Edin)" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Orthopedician", details: "MBBS, D Ortho, MS Ortho" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+
+        <div class="item" id="item-3">
+            <div class="logo">
+                <img src="img/gynecology.svg" alt="Gynocology Logo">
+            </div>
+            <h2>Gynecology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Gynecology Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-3');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr Asha Devi S", specialty: "Gynecologist", details: "MBBS,MS(O&G)MRCOG(UK)" },
+                    { name: "Dr Prameela Sekhar", specialty: "Gynecologist", details: "MBBS,DGO,DNB" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Gynecologist", details: "MBBS, MS(Obs& Gynecology), MHA, FICOG" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-4">
+            <div class="logo">
+                <img src="img/dermatology.svg" alt="Dermatology Logo">
+            </div>
+            <h2>Dermatology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Dermatology Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-4');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. Aishwarya Malladi", specialty: "Dermatologist ", details: "MBBS, MD Dermatology, Venereology & Leprology" },
+                    { name: "Dr Apoorva Raghavan", specialty: "Dermatologist", details: "MBBS, MD (Dermatology Venereology and Leprosy)" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Dermatologist", details: "MD (DVL)" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-5">
+            <div class="logo">
+                <img src="img/paediatricurology.svg" alt="Pediatrics Logo">
+            </div>
+            <h2>Pediatrics</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Orthopaedic Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-5');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. Abhijit Bagde", specialty: "Pediatrician", details: "MBBS, DNB (Paed), FNB (Pead Crit care), MNAMS" },
+                    { name: "Dr. Abheek Kar", specialty: "Pediatrician", details: "MD, PDCCVisiting Fellowship RCPCH, UK" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Pediatrician", details: "MBBS, DNB(paediatric), Dch (1997)" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-6">
+            <div class="logo">
+                <img src="img/urology.svg" alt="Urology Logo">
+            </div>
+            <h2>Urology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Urology Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-6');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. A Mohan Krishna", specialty: "Urologist ", details: "MBBS; MS urology MCh urology" },
+                    { name: "Dr. Abheek Kar", specialty: "Urologist", details: "MS(urology), MRCS(Edin)" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Urologist", details: "MBBS, D urology" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+
+        <div class="item" id="item-7">
+            <div class="logo">
+                <img src="img/nephrology.svg" alt="Nephrology Logo">
+            </div>
+            <h2>Nephrology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Nephrology Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-7');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. A Mohan Krishna", specialty: " Nephrologist", details: "MBBS, DNB (General Medicine), DNB (Nephrology)" },
+                    { name: "Dr. Amar Kulkarni", specialty: "Nephrologist", details: "MBBS ,MD Medicine, DM Nephrology,DNB Nephrolog" },
+                    { name: "Dr. Amit Gupta ", specialty: "Nephrologist", details: "MD, DNB (Nephrology), FRCP (London)" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-8">
+            <div class="logo">
+                <img src="img/ent.svg" alt="ENT(EAr,Nose,Throat) Logo">
+            </div>
+            <h2>ENT(EAr,Nose,Throat)</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>ENT-Specialist Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-8');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr.A Sudha", specialty: "ENT ", details: "MBBS, FRCS, FRCS(Otolaryngology - Glasgow, Edinburgh)" },
+                    { name: "Dr.  Abhik Ghosh", specialty: "ENT", details: "Clinical Fellowship in Otology, MS-ENT, MBBS" },
+                    { name: "Dr. Aanchal Mittal ", specialty: "ENT", details: "MBBS, DLO, DNB" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-9">
+            <div class="logo">
+                <img src="img/pulmonology.svg" alt="Pulmonology Logo">
+            </div>
+            <h2>Pulmonology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Pulmonologist Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-9');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. Aparna Iyer", specialty: "Pulmonologist ", details: "MBBS, MD" },
+                    { name: "Dr. Abheek Kar", specialty: "Pulmonologist", details: "MD (Respiratory Medicine), PDCC" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Pulmonologist", details: "MBBS,DTMH,MD,MRCP" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-10">
+            <div class="logo">
+                <img src="img/dentistry.svg" alt="Density Logo">
+            </div>
+            <h2>Density</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Dentist Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-10');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr.Amit Lall", specialty: "Dentist", details: "BDS,MDS" },
+                    { name: "Dr. Amita Agarwal", specialty: "Dentist", details: "BDS" },
+                    { name: "Dr.Amrut Bambawale ", specialty: "Dentist", details: "MDS Periodontics - 1996" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-11">
+            <div class="logo">
+                <img src="img/neonatology.svg" alt="Density Logo">
+            </div>
+            <h2>Neonatology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Neonatologist Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-11');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. Jaya Kumar Reddy", specialty: "Neonatologist ", details: "M.B.B.S M.D.(PAED),NEONATAL" },
+                    { name: "Dr.  Latha Kanchi Parthasarathy", specialty: "Neonatologist", details: "MBBS, MRCP, Dch, Consultant Paediatrician & Neonatologist" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Neonatologist", details: "MBBS; DCH; MRCPCH; CCT (London)" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+        <div class="item" id="item-12">
+            <div class="logo">
+                <img src="img/gastroenterology.svg" alt="Density Logo">
+            </div>
+            <h2>Gastroenterology</h2>
+        </div>
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Gastroenterologist Doctors</h3>
+                <div id="doctor-list"></div>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript code
+            var item1 = document.getElementById('item-12');
+            var modal = document.getElementById('myModal');
+            var closeBtn = document.getElementsByClassName('close')[0];
+
+            item1.addEventListener('click', showDoctors);
+            closeBtn.addEventListener('click', closeModal);
+
+            function showDoctors() {
+                var doctors = [
+                    { name: "Dr. Adesh A Shetty", specialty: "Gastroenterologist ", details: "MBBS, DNB(General Medicine), DNB (Gastroenterology) MRCP (SCE - Gastroenterology)" },
+                    { name: "Dr.  Aditya Shah", specialty: "Gastroenterologist", details: "D.M. Medical Gastroenterology" },
+                    { name: "Dr. Ajayakumar T ", specialty: "Gastroenterologist", details: "MBBS, FRCP" }
+                ];
+
+                var doctorList = document.getElementById('doctor-list');
+                doctorList.innerHTML = "";
+
+                for (var i = 0; i < doctors.length; i++) {
+                    var doctor = doctors[i];
+                    var doctorElement = document.createElement('div');
+                    doctorElement.innerHTML = "<h4>" + doctor.name + "</h4>" +
+                        "<p><strong>Specialty:</strong> " + doctor.specialty + "</p>" +
+                        "<p>" + doctor.details + "</p>" +
+                        "<hr>";
+                    doctorList.appendChild(doctorElement);
+                }
+
+                modal.style.display = "block";
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+        </script>
+    </div>
+
+
+
+
+
+    <section class="secleft">
+        <div class="paras">
+            <p class="sectionTag">Why Choose MediFlow Healthcare?</p>
+            <p class="sectionsubTag">Welcome to our hospital, where your well-being is our priority. Here's why you
+                should choose us:
+                Expert Care: Our experienced team provides top-quality medical care tailored to your needs.
+                Advanced Facilities: We have state-of-the-art facilities with the latest medical technology.
+                Comprehensive Services: From check-ups to specialized treatments, we offer a wide range of medical
+                services.
+                Patient-Centered Approach: We prioritize your comfort and satisfaction, providing personalized care.
+                Focus on Safety: We maintain rigorous safety standards for your peace of mind.
+                Positive Patient Experiences: Our patients' feedback reflects the quality of care we provide.
+            </p>
+        </div>
+        <div class="thumbnail">
+            <img src="img/doc_pat.webp" alt="Thumbnail Picture" class="imgFluid">
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h1 class="text_centre">Contact Us</h1>
+        <div class="form">
+            <form id="contactForm" action="thankyou.html">
+                <input type="text" name="Phone" id="Phone" placeholder="Enter Your Phone No">
+                <input type="text" name="email" id="email" placeholder="Enter Your Email">
+                <button type="submit" class="btn button-dark">Submit</button>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+
+    <footer>
+        <p>&copy; 2023 MediFlow. All rights reserved.</p>
+    </footer>
+
+
+
+</body>
+
+</html>

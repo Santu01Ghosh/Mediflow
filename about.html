@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About Hospital</title>
+</head>
+<style>
+    body {
+        font-family: cursive;
+        background-color: #93eecf;
+    }
+    h1 {
+        margin: 3%;
+        text-align: center;
+        color:rgb(131, 8, 8);
+        font-family: cursive;
+    }
+    .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+    p {
+        color:#080000;
+        font-style: italic;
+        padding: 1%;
+        font-size: 20px;
+        text-align: center;
+    }
+
+</style>
+
+<body>
+    <h1>About Us</h1>
+    <p class="fade-in">Welcome to MediFlow : Efficient Hospital ! We are a dedicated healthcare institution providing comprehensive
+        medical services to our community. Our team of skilled doctors, nurses, and staff is committed to delivering
+        high-quality patient care and ensuring your well-being.</p>
+    <p class="fade-in">At our hospital, we offer a wide range of medical specialties, including cardiology, neurology, orthopedics, and
+        more. Our state-of-the-art facilities and advanced equipment enable us to provide accurate diagnoses and
+        effective treatments for various medical conditions.</p>
+    <p class="fade-in">We strive to create a comfortable and compassionate environment for our patients, where their health concerns are
+        addressed with utmost care and professionalism. Feel free to explore our website and contact us for any
+        inquiries or appointments.</p>
+    <p class="fade-in">Our hospital is proud to be affiliated with renowned medical research institutions and universities, allowing us
+        to stay at the forefront of medical advancements. We actively participate in clinical trials and research
+        studies, contributing to the development of innovative treatments and therapies.</p>
+    <p class="fade-in">As a patient-centered healthcare institution, we prioritize your needs and preferences. Our dedicated staff
+        ensures personalized care and attention throughout your medical journey, fostering a trusting relationship
+        between patients and healthcare providers.</p>
+
+        <script>
+            // Trigger fade-in animation for paragraphs
+            const paragraphs = document.querySelectorAll('.fade-in');
+            paragraphs.forEach((paragraph, index) => {
+                paragraph.style.animationDelay = `${index * 0.3}s`;
+            });
+        </script>
+</body>
+
+</html>
